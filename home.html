@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر إلكتروني</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            direction: rtl;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar {
+            width: 250px;
+            background: #fff;
+            color: #000;
+            height: 100vh;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            transition: transform 0.3s ease;
+        }
+        .sidebar.open {
+            left: 0;
+        }
+        .sidebar h2 {
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            background: #f1f1f1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar ul li {
+            padding: 15px 20px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .sidebar ul li:hover {
+            background: #f1f1f1;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+        }
+
+
+
+       
+        .toggle-btn {
+            position: fixed;
+            left: 0;
+            top: 29px;
+            background: transparent;
+            color: #000;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 30px;
+            transition: font-size 0.3s ease;
+        }
+        .container {
+            margin-left: 0;
+            padding: 20px;
+            flex: 1;
+            transition: margin-left 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+        .container.sidebar-open {
+            margin-left: 250px;
+        }
+        .search-box {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+        .product p {
+            margin: 10px 0;
+        }
+        .add-to-cart {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .add-to-cart:hover {
+            background: #218838;
+        }
+        .cart-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div class="sidebar" id="sidebar">
+        <h2>القائمة <a href="cart.html" class="cart-icon" id="cart-icon">🛒</a></h2>
+        <ul>
+            <li><a href="home.html">الرئيسية</a></li>
+            <li>الإلكترونيات</li>
+            <li>الأجهزة المنزلية</li>
+            <li>الإكسسوارات</li>
+            <li>العروض</li>
+        </ul>
+    </div>
+    <div class="container" id="container">
+        <h1>متجر إلكتروني</h1>
+        <input type="text" id="search" class="search-box" placeholder="ابحث عن منتج..." onkeyup="searchProducts()">
+        <div class="products" id="products">
+            <div class="product" data-name="هاتف" data-price="100">
+                <img src="download (7).jpeg" alt="هاتف">
+                <p>هاتف</p>
+                <p>100 ريال</p>
+                <button class="add-to-cart" onclick="addToCart('هاتف', 100)">أضف إلى السلة</button>
+            </div>
+            <div class="product" data-name="لابتوب" data-price="200">
+                <img src="download.webp" alt="لابتوب">
+                <p>لابتوب</p>
+                <p>200 ريال</p>
+                <button class="add-to-cart" onclick="addToCart('لابتوب', 200)">أضف إلى السلة</button>
+            </div>
+            <div class="product" data-name="ساعة ذكية" data-price="150">
+                <img src="download (1).webp" alt="ساعة ذكية">
+                <p>ساعة ذكية</p>
+                <p>150 ريال</p>
+                <button class="add-to-cart" onclick="addToCart('ساعة ذكية', 150)">أضف إلى السلة</button>
+            </div>
+            <!-- أضف المزيد من المنتجات هنا -->
+        </div>
+    </div>
+
+    <link rel="icon" type="image/x-icon" href="https://d2pi0n2fm836iz.cloudfront.net/596389/0905202408242266d96ab680df0-0905202408240166d96aa1d831b.jpg"/>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function searchProducts() {
+            let input = document.getElementById('search').value.toLowerCase();
+            let products = document.querySelectorAll('.product');
+            
+            products.forEach(product => {
+                let name = product.getAttribute('data-name').toLowerCase();
+                if (name.includes(input)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const container = document.getElementById('container');
+            const toggleBtn = document.querySelector('.toggle-btn');
+            sidebar.classList.toggle('open');
+            container.classList.toggle('sidebar-open');
+            toggleBtn.style.fontSize = sidebar.classList.contains('open') ? '20px' : '30px';
+        }
+
+        function addToCart(productName, productPrice) {
+            cart.push({ name: productName, price: productPrice });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartIcon();
+        }
+
+        function updateCartIcon() {
+            const cartIcon = document.getElementById('cart-icon');
+            cartIcon.textContent = `🛒 (${cart.length})`;
+        }
+
+        updateCartIcon();
+    </script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>Dashboard | iSchool</title>
+    <script>
+      const updateTitle = () => {
+        const hostname = window.location.hostname
+        const org = hostname.split('.')[0]
+        const capitalizedOrg = org.charAt(0).toUpperCase() + org.slice(1)
+        const role = localStorage.getItem('role')
+
+        if (role == 'Student') {
+          document.title = `${capitalizedOrg} | iSchool`
+        } else {
+          document.title = `${role || ''} Dashboard | iSchool`
+        }
+      }
+      updateTitle()
+      // Listen for localStorage changes
+      window.addEventListener('roleChange', (event) => {
+        updateTitle()
+      })
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Creating The Next Technology Leaders" />
+    <meta
+      content="https://cdn.prod.website-files.com/655a78032f46f2e55da300d7/65787035e43defb3a13bd2ca_iSchool-LinkedinFacebook%20covers.png"
+      property="og:image"
+    />
+    <meta name="robots" content="noindex" />
+    <meta name="google" value="notranslate" />
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    <!-- fontawesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://wchat.freshchat.com/js/widget.js"></script>
+    <div id="adobe-dc-view"></div>
+    <style></style>
+    <script src="https://player.vdocipher.com/v2/api.js"></script>
+    <script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
+
+    <script>
+      ;(function (h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function () {
+            ;(h.hj.q = h.hj.q || []).push(arguments)
+          }
+        h._hjSettings = { hjid: 3734361, hjsv: 6 }
+        a = o.getElementsByTagName('head')[0]
+        r = o.createElement('script')
+        r.async = 1
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv
+        a.appendChild(r)
+      })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=')
+    </script>
+
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="/manifest.json" />
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>iSchool</title>
+    <link
+      rel="preload"
+      href="/fonts/SomarRounded-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/SomarRounded-Medium.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/SomarRounded-SemiBold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/SomarRounded-Bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      @font-face {
+        font-family: 'Somarrounded';
+        src: url('/fonts/SomarRounded-Regular.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Somarrounded';
+        src: url('/fonts/SomarRounded-Medium.ttf') format('truetype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Somarrounded';
+        src: url('/fonts/SomarRounded-SemiBold.ttf') format('truetype');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Somarrounded';
+        src: url('/fonts/SomarRounded-Bold.ttf') format('truetype');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-CrRB9AqW.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DSB8_rja.css">
+  </head>
+
+  <!-- if arabic just add class="direction-rtl" to body tag  -->
+
+  <body id="web-app-body-tag" class="overflow-hidden">
+    <!-- <body class="direction-rtl"> -->
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div
+      id="ischool-overlay"
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: baseline;
+        align-items: center;
+        gap: 10px;
+        width: 100vw;
+        height: 100vh;
+        animation: fade-in 2s ease-in-out infinite;
+      "
+    >
+      <div style="margin-top: 40vh"></div>
+      <style>
+        @keyframes fade-in {
+          0% {
+            opacity: 0.6;
+          }
+          50% {
+            opacity: 0.8;
+          }
+          100% {
+            opacity: 0.6;
+          }
+        }
+      </style>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        width="40"
+        viewBox="0 0 826.3 1000"
+        xml:space="preserve"
+      >
+        <path
+          id="yellow-trail"
+          fill="#ffd700"
+          d="M455.5,420.1C315,479,207.2,562.6,154.5,690.1c-54,132.2,58.4,202.7,179,169.8     c83.7-21.3,164.6-81.6,231.9-150.8c134.4-130.5,173.2-355.6,39-498.2C462.5,56.7,233.5,113.6,85.6,237     c-28.4,22.1-62.5-19.2-35.7-43C170.3,86.1,349.8,7.3,515.5,61.1c172.9,51.3,284.2,233.8,271.4,410.7     c-9.4,179.4-122.6,327.4-261.3,430c-132.9,105.4-364.1,150-480.9-8.2C-47.9,765.1,17.6,591.3,107,483.4     c73.8-91.9,157.8-168,253.6-225.7c96.2-53.6,183.1,92,88,147.8L455.5,420.1z"
+        />
+        <path
+          fill="#056fec"
+          id="blue-body"
+          d="M503.5,550.8l9.1,243.3c1.8,46-23.9,75.5-67.5,77.2c-43.5,1.7-71.4-25.7-73.2-71.8l-9.1-243.3     c-1.8-46,23.9-75.5,67.5-77.2C473.8,477.3,501.7,504.8,503.5,550.8z"
+        />
+        <circle
+          id="orange-ball"
+          fill="#ff7f1c"
+          cx="415.2"
+          cy="334.7"
+          r="94.5"
+        />
+      </svg>
+    </div>
+
+    <div id="root" />
+    <div id="modals-container"></div>
+    <div id="preview-modal"></div>
+
+    <!--
+  This HTML file is a template.
+  If you open it directly in the browser, you will see an empty page.
+
+  You can add webfonts, meta tags, or analytics to this file.
+  The build step will place the bundled scripts into the <body> tag.
+
+  To begin the development, run `npm start` or `yarn start`.
+  To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
